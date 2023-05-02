@@ -21,6 +21,9 @@ public class CardAdpter extends RecyclerView.Adapter<CardAdpter.CardViewHolder>{
     public CardAdpter(List<Card> cards) {
         this.cards = cards;
     }
+    public List<Card> getCards() {
+        return cards;
+    }
 
     @NonNull
     @Override

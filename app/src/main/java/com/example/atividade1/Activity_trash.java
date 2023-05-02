@@ -36,11 +36,14 @@ public class Activity_trash extends AppCompatActivity {
         findViewById(R.id.btnAddM).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Card card = Card.builder();
+                /*Card card = Card.builder();
                 CardDAO.insert(Activity_trash.this, card);
-                /*Intent i = new Intent(Activity_trash.this, CadastroActivity.class);
+                cardAdpter.getCards().add(card);
+                cardAdpter.notifyItemInserted(0);
+                rv.scrollToPosition(0);*/
+                Intent i = new Intent(Activity_trash.this, CadastroActivity.class);
                 i.putExtra("action", "insert");
-                startActivity(i);*/
+                startActivity(i);
             }
         });
 
@@ -80,19 +83,11 @@ public class Activity_trash extends AppCompatActivity {
 
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-            List<Card> cards = CardDAO.getCards(viewHolder.itemView.getContext());
-
-            if(!deleteCard)
-                delete(cards, viewHolder);
-            else{
-                cards.remove(viewHolder.getAdapterPosition());
-                cardAdpter.notifyItemRemoved(viewHolder.getAdapterPosition());
-            }
+            Card card = cardAdpter.getCards().get(viewHolder.getAdapterPosition());
+            delete(card, viewHolder);
         }
 
-        private void delete(List<Card> cards, RecyclerView.ViewHolder viewHolder) {
-
-            Card card = cards.get(viewHolder.getAdapterPosition());
+        private void delete(Card card, RecyclerView.ViewHolder viewHolder) {
 
             AlertDialog.Builder alerta = new AlertDialog.Builder(viewHolder.itemView.getContext());
             alerta.setTitle("Delete");
@@ -112,8 +107,8 @@ public class Activity_trash extends AppCompatActivity {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     CardDAO.delete(Activity_trash.this, card.getId() );
-                    deleteCard = true;
-                    onSwiped(viewHolder, ItemTouchHelper.LEFT);
+                    cardAdpter.getCards().remove(viewHolder.getAdapterPosition());
+                    cardAdpter.notifyItemRemoved(viewHolder.getAdapterPosition());
                 }
             });
             alerta.show();
