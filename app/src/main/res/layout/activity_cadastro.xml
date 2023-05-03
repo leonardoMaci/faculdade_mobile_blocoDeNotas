@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:background="@color/blueMid">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -21,8 +21,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:text="Title"
-            android:textColor="@color/white"/>
+            android:text="@string/tv_title"
+            style="@style/cadastroTvLabels"/>
 
         <EditText
             android:id="@+id/etTitle"
@@ -30,9 +30,9 @@
             android:layout_height="48dp"
             android:layout_marginTop="10dp"
             android:ems="10"
-            android:hint="Title"
-            android:inputType="textCapWords"
-            android:layout_below="@id/tvTitle"/>
+            android:layout_below="@id/tvTitle"
+            android:textCursorDrawable="@drawable/cursor"
+            style="@style/cadastroTitleED"/>
 
         <TextView
             android:id="@+id/tvDescription"
@@ -40,8 +40,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:layout_below="@id/etTitle"
-            android:text="Description"
-            android:textColor="@color/white"/>
+            android:text="@string/tv_description"
+            style="@style/cadastroTvLabels"/>
 
         <EditText
             android:id="@+id/etDescription"
@@ -51,29 +51,31 @@
             android:padding="15dp"
             android:ems="10"
             android:gravity="top"
-            android:hint="Description"
-            android:inputType="textCapWords|textMultiLine"
             android:layout_below="@id/tvDescription"
-            android:background="@drawable/et_description"/>
+            android:background="@drawable/et_description"
+            android:textCursorDrawable="@drawable/cursor"
+            style="@style/cadastroDescriptionED"/>
 
         <CheckBox
             android:id="@+id/cbPinnedCard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
-            android:layout_marginStart="55dp"
+            android:layout_marginStart="35dp"
             android:layout_below="@id/etDescription"
-            android:text="Pin Card"/>
+            android:text="@string/cb_pinned"
+            style="@style/cadastroCheckBox"/>
 
         <CheckBox
             android:id="@+id/cbMarker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
-            android:layout_marginStart="55dp"
+            android:layout_marginStart="35dp"
             android:layout_below="@id/etDescription"
             android:layout_toEndOf="@id/cbPinnedCard"
-            android:text="Marker"/>
+            android:text="@string/cb_marker"
+            style="@style/cadastroCheckBox"/>
 
         <Button
             android:id="@+id/btnCancel"
@@ -82,7 +84,9 @@
             android:layout_marginTop="40dp"
             android:layout_marginStart="50dp"
             android:layout_below="@id/cbPinnedCard"
-            android:text="Cancel"/>
+            android:text="@string/btn_cancel"
+            android:backgroundTint="@color/blueDark"
+            style="@style/cadsatroButtonNegative"/>
 
         <Button
             android:id="@+id/btnSave"
@@ -90,9 +94,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:layout_marginStart="50dp"
-            android:text="Save"
+            android:text="@string/btn_save"
             android:layout_below="@id/cbPinnedCard"
-            android:layout_toEndOf="@id/btnCancel"/>
+            android:layout_toEndOf="@id/btnCancel"
+            android:backgroundTint="@color/blueDark"
+            style="@style/cadsatroButtonPositive"/>
     </RelativeLayout>
 
 </LinearLayout>

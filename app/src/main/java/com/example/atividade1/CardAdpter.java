@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -83,7 +84,7 @@ public class CardAdpter extends RecyclerView.Adapter<CardAdpter.CardViewHolder>{
                 pin.setVisibility(View.INVISIBLE);
 
             if(card.isMarker())
-                cardView.setCardBackgroundColor(itemView.getContext().getColor(R.color.purple_200));
+                cardView.setCardBackgroundColor(itemView.getContext().getColor(R.color.purple));
         }
     }
 }

@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.SortedList;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 
@@ -17,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 public class Activity_trash extends AppCompatActivity {
@@ -66,14 +69,15 @@ public class Activity_trash extends AppCompatActivity {
         @Override
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
 
+                List<Card> cards = CardDAO.getCards(recyclerView.getContext());
+                Card card = cards.get(viewHolder.getAdapterPosition());
+
                 int from = viewHolder.getAdapterPosition();
                 int to = target.getAdapterPosition();
 
-                if (from == 0 || to == 0) {
+                if (card.isPinnedCard()) {
                     return false;
                 }
-
-                List<Card> cards = CardDAO.getCards(recyclerView.getContext());
 
                 Collections.swap(cards, from, to);
                 cardAdpter.notifyItemMoved(from, to);

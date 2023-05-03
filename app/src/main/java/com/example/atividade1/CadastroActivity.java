@@ -10,6 +10,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.Locale;
+
 public class CadastroActivity extends AppCompatActivity {
 
     private EditText etTitle, etDescription;
@@ -27,10 +29,17 @@ public class CadastroActivity extends AppCompatActivity {
         etDescription = findViewById(R.id.etDescription);
         cbPinnedCard = findViewById(R.id.cbPinnedCard);
         cbMarker = findViewById(R.id.cbMarker);
-    btnSave = findViewById(R.id.btnSave);
+        btnSave = findViewById(R.id.btnSave);
         btnCancel = findViewById(R.id.btnCancel);
 
         Card itemSelected = (Card) getIntent().getSerializableExtra("edit");
+
+        //calcula o numero maximo de linhas
+        EditText etTxtDesc = findViewById(R.id.etDescription);
+        int editTextHeight = 250;
+        int lineHeight = etTxtDesc.getLineHeight();
+        int maxLines = editTextHeight / lineHeight;
+        etTxtDesc.setMaxLines(maxLines);
 
         if (itemSelected != null) {
             btnSave.setText("Update");
