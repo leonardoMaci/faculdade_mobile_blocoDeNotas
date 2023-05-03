@@ -14,31 +14,6 @@
     android:layout_margin="10dp"
     android:id="@+id/cardView">
 
-    <!--<TextView
-        android:id="@+id/list_item_text"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="3"
-        android:gravity="center_vertical"
-        android:maxLines="1"
-        android:minHeight="?android:attr/listPreferredItemHeightSmall"
-        android:padding="16dp"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        tools:ignore="MissingConstraints" />
-
-    <CheckBox
-        android:id="@+id/cb_list_item"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_weight="1"
-        android:background="@null"
-        android:clickable="false"
-        android:focusable="false"
-        android:text="Marker" />-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,51 +22,38 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="10dp">
 
-        <!--<TextView
-            android:id="@+id/txtIcon"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:textSize="24sp"
-            android:textColor="@color/white"
-            android:background="@drawable/circle"
-            android:gravity="center"
-            tools:text="F">
-        </TextView>-->
-
         <TextView
             android:id="@+id/txtUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="@color/white"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="10sp"
             android:layout_toStartOf="@id/txtDate"
             tools:text="Facebook"
-            android:textAlignment="center">
+            android:textAlignment="center"
+            style="@style/title">
         </TextView>
 
         <TextView
             android:id="@+id/txtDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="@color/white"
-            android:singleLine="true"
-            android:ellipsize="marquee"
+            android:ellipsize="end"
             android:layout_below="@id/txtUser"
             android:layout_alignStart="@id/txtUser"
             android:layout_marginEnd="24dp"
-            tools:text="bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla ">
+            android:maxLines="3"
+            tools:text="bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla "
+            style="@style/description">
         </TextView>
         <TextView
             android:id="@+id/txtDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/holo_red_dark"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            tools:text="20 mai">
+            tools:text="20 mai"
+            style="@style/data">
         </TextView>
         <ImageView
             android:id="@+id/ivPin"
@@ -100,7 +62,7 @@
             android:background="@drawable/baseline_push_pin_24"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:backgroundTint="@android:color/holo_red_dark">
+            style="@style/pinned">
         </ImageView>
 
     </RelativeLayout>

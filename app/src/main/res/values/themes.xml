@@ -1,5 +1,25 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Atividade1" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="recyclerviewCards" parent="Base.Theme.Atividade1">
+        <item name="android:background">@color/blueMid</item>
+    </style>
+    <style name="title" parent="Base.Theme.Atividade1">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="description" parent="Base.Theme.Atividade1">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="data"  parent="Base.Theme.Atividade1">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="pinned" parent="Base.Theme.Atividade1">
+        <item name="backgroundTint">@color/blueDark</item>
     </style>
 </resources>

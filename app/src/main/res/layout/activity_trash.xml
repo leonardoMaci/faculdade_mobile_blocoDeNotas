@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity_trash"
-   >
+    tools:context=".Activity_trash">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -19,20 +18,18 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="@string/app_name">
-        </androidx.appcompat.widget.Toolbar>
+            app:title="@string/app_name"></androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/recyclerView"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_below="@id/app_bar"
-    android:background="@android:color/white"
-    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-    tools:listitem="@layout/list_item">
-    </androidx.recyclerview.widget.RecyclerView>
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/app_bar"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        style="@style/recyclerviewCards"
+        tools:listitem="@layout/list_item"></androidx.recyclerview.widget.RecyclerView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnAddM"
