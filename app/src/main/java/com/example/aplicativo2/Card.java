@@ -1,6 +1,4 @@
-package com.example.atividade1;
-
-import androidx.annotation.NonNull;
+package com.example.aplicativo2;
 
 import java.io.Serializable;
 import java.time.LocalDate;

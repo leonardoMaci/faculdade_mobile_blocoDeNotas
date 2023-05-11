@@ -1,16 +1,17 @@
-package com.example.atividade1;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.aplicativo2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import java.util.Locale;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class CadastroActivity extends AppCompatActivity {
 
@@ -32,14 +33,22 @@ public class CadastroActivity extends AppCompatActivity {
         btnSave = findViewById(R.id.btnSave);
         btnCancel = findViewById(R.id.btnCancel);
 
-        Card itemSelected = (Card) getIntent().getSerializableExtra("edit");
+        //calc margin buttons
+        DisplayMetrics displayMetrics = this.getResources().getDisplayMetrics();
+        float screenWidth = displayMetrics.widthPixels / displayMetrics.density;
+        float margin10 = screenWidth * 0.10f;
 
-        //calcula o numero maximo de linhas
-        EditText etTxtDesc = findViewById(R.id.etDescription);
-        int editTextHeight = 250;
-        int lineHeight = etTxtDesc.getLineHeight();
-        int maxLines = editTextHeight / lineHeight;
-        etTxtDesc.setMaxLines(maxLines);
+        RelativeLayout.LayoutParams paramsBtnCancelar = (RelativeLayout.LayoutParams) btnCancel.getLayoutParams();
+        int marginParam = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, margin10, getResources().getDisplayMetrics());
+        paramsBtnCancelar.leftMargin = marginParam;
+        btnCancel.setLayoutParams(paramsBtnCancelar);
+
+        RelativeLayout.LayoutParams paramsBtnSave = (RelativeLayout.LayoutParams) btnSave.getLayoutParams();
+        marginParam = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, margin10, getResources().getDisplayMetrics());
+        paramsBtnSave.leftMargin = marginParam;
+        btnSave.setLayoutParams(paramsBtnSave);
+
+        Card itemSelected = (Card) getIntent().getSerializableExtra("edit");
 
         if (itemSelected != null) {
             btnSave.setText("Update");
@@ -62,7 +71,7 @@ public class CadastroActivity extends AppCompatActivity {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(CadastroActivity.this, Activity_trash.class);
+                Intent i = new Intent(CadastroActivity.this, MainActivity.class);
                 i.putExtra("action", "cancel");
                 startActivity(i);
             }
@@ -91,7 +100,7 @@ public class CadastroActivity extends AppCompatActivity {
             cbMarker.setChecked(false);
             card = null;
 
-            Intent i = new Intent(CadastroActivity.this, Activity_trash.class);
+            Intent i = new Intent(CadastroActivity.this, MainActivity.class);
             i.putExtra("action", "cancel");
             startActivity(i);
         }
@@ -118,7 +127,7 @@ public class CadastroActivity extends AppCompatActivity {
             cbMarker.setChecked(false);
             card = null;
 
-            Intent i = new Intent(CadastroActivity.this, Activity_trash.class);
+            Intent i = new Intent(CadastroActivity.this, MainActivity.class);
             i.putExtra("action", "cancel");
             startActivity(i);
         }

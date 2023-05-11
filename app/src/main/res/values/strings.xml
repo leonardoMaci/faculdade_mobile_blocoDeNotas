@@ -10,4 +10,8 @@
     <string name="btn_cancel">Cancelar</string>
     <string name="pt_br_language">Português</string>
     <string name="en_us_language">Inglês</string>
+    <string name="deleteMSG">Confirmar Exclusão</string>
+    <string name="positive">Sim</string>
+    <string name="negative">Não</string>
+    <string name="deleteTitle">Deletar</string>
 </resources>

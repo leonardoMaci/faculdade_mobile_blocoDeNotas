@@ -11,4 +11,8 @@
     <string name="btn_cancel">Cancel</string>
     <string name="pt_br_language">Brazil</string>
     <string name="en_us_language">English</string>
+    <string name="deleteMSG">Confirm Deletion</string>
+    <string name="positive">Yes</string>
+    <string name="negative">No</string>
+    <string name="deleteTitle">Delete</string>
 </resources>

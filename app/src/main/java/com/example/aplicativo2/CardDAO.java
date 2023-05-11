@@ -1,4 +1,4 @@
-package com.example.atividade1;
+package com.example.aplicativo2;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -92,7 +92,7 @@ public class CardDAO {
 
         SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
         String StringDate = cursor.getString( 5);
-        java.sql.Date date;
+        Date date;
 
         try {
             java.util.Date parseDate = formatDate.parse(StringDate);
