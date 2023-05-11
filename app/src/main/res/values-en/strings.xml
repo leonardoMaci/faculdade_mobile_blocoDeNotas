@@ -15,4 +15,5 @@
     <string name="positive">Yes</string>
     <string name="negative">No</string>
     <string name="deleteTitle">Delete</string>
+    <string name="update">Update</string>
 </resources>

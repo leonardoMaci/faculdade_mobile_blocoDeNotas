@@ -51,7 +51,7 @@ public class CadastroActivity extends AppCompatActivity {
         Card itemSelected = (Card) getIntent().getSerializableExtra("edit");
 
         if (itemSelected != null) {
-            btnSave.setText("Update");
+            btnSave.setText(getApplicationContext().getString(R.string.update));
             etTitle.setText(itemSelected.getTitle());
             etDescription.setText(itemSelected.getDescription());
             cbPinnedCard.setChecked(itemSelected.isPinnedCard());
