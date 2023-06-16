@@ -3,18 +3,22 @@ package com.example.aplicativo2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     CardAdpter cardAdpter;
@@ -41,6 +45,56 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent(MainActivity.this, CadastroActivity.class);
                 i.putExtra("action", "insert");
                 startActivity(i);
+            }
+        });
+
+        findViewById(R.id.btnLanguage).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle(R.string.btn_title_language);
+
+                builder.setPositiveButton("Português", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        setAppLanguage("pt");
+                        recreate();
+                    }
+                });
+
+                builder.setNegativeButton("Inglês", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        setAppLanguage("en");
+                        recreate();
+                    }
+                });
+
+                builder.setNeutralButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+        findViewById(R.id.btnDarkMode).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                recreate();
+            }
+        });
+
+        findViewById(R.id.btnLightMode).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                recreate();
             }
         });
 
@@ -111,5 +165,16 @@ public class MainActivity extends AppCompatActivity {
             });
             alerta.show();
         }
+    }
+    private void setAppLanguage(String languageCode) {
+        Locale locale = new Locale(languageCode);
+        Locale.setDefault(locale);
+
+        Resources resources = getResources();
+        Configuration configuration = resources.getConfiguration();
+        configuration.setLocale(locale);
+        configuration.setLayoutDirection(locale);
+
+        resources.updateConfiguration(configuration, resources.getDisplayMetrics());
     }
 }

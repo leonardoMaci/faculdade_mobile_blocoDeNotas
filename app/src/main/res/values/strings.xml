@@ -15,4 +15,5 @@
     <string name="negative">Não</string>
     <string name="deleteTitle">Deletar</string>
     <string name="update">Atualizar</string>
+    <string name="btn_title_language">Escolha a linguagem</string>
 </resources>

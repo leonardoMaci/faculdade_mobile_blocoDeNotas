@@ -6,7 +6,7 @@
     </style>
     <style name="Theme.Aplicativo2" parent="Base.Theme.Aplicativo2" />
     <style name="recyclerviewCards" parent="Base.Theme.Aplicativo2">
-        <item name="android:background">@color/blueMid</item>
+        <item name="android:background">@color/purple</item>
     </style>
     <style name="title" parent="Base.Theme.Aplicativo2">
         <item name="android:textSize">18sp</item>
