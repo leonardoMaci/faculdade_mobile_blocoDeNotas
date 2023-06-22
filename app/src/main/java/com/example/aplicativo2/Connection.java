@@ -8,7 +8,7 @@ public class Connection extends SQLiteOpenHelper {
 
     private static final String NOME_BD = "bd-appCard";
 
-    private static final int VERSAO_BD = 1;
+    private static final int VERSAO_BD = 2;
 
     public Connection(Context context) {
         super(context, NOME_BD, null, VERSAO_BD);
@@ -23,10 +23,16 @@ public class Connection extends SQLiteOpenHelper {
                 " description TEXT NOT NULL ," +
                 " marker BOOL NOT NULL DEFAULT 0 ," +
                 " pinnedCard BOOL NOT NULL DEFAULT 0 ," +
+                " category TEXT," +
                 " timeStamp DATETIME DEFAULT CURRENT_TIMESTAMP)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        // Excluir a tabela existente
+        db.execSQL("DROP TABLE IF EXISTS cards");
+
+        // Criar uma nova tabela
+        onCreate(db);
     }
 }

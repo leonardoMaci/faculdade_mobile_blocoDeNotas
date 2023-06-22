@@ -5,8 +5,7 @@
     <string name="et_title">Title...</string>
     <string name="tv_description">Description</string>
     <string name="et_description">Description...</string>
-    <string name="cb_pinned">Pinned Card</string>
-    <string name="cb_marker">Marker</string>
+    <string name="cb_pinned">Favorite</string>
     <string name="btn_save">Save</string>
     <string name="btn_cancel">Cancel</string>
     <string name="pt_br_language">Brazil</string>

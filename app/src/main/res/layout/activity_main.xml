@@ -64,14 +64,42 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/app_bar"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        style="@style/recyclerviewCards"
-        tools:listitem="@layout/list_item"></androidx.recyclerview.widget.RecyclerView>
+        android:layout_below="@id/app_bar">
+
+        <LinearLayout
+            android:id="@+id/linerSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Categoria:"
+                android:textSize="16sp"
+                android:padding="8dp" />
+
+            <Spinner
+                android:id="@+id/spinnerOptions"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:spinnerMode="dropdown"
+                android:dropDownVerticalOffset="60dp"/>
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/linerSpinner"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            style="@style/recyclerviewCards"
+            tools:listitem="@layout/list_item" />
+
+    </RelativeLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnAddM"

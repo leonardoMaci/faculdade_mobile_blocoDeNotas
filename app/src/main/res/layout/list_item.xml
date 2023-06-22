@@ -10,9 +10,9 @@
     tools:ignore="MissingConstraints"
     tools:showIn="@layout/activity_main"
     app:cardCornerRadius="25dp"
-    app:cardBackgroundColor="#7eb9f2"
     android:layout_margin="10dp"
-    android:id="@+id/cardView">
+    android:id="@+id/cardView"
+    style="@style/listItem">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -59,12 +59,11 @@
             android:id="@+id/ivPin"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:background="@drawable/baseline_push_pin_24"
+            android:background="@drawable/baseline_star_border_24"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             style="@style/pinned">
         </ImageView>
-
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

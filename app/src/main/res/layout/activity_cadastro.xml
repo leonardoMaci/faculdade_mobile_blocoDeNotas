@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blueMid">
+    style="@style/cadastro">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,7 +14,8 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="10dp"
         android:padding="20dp"
-        android:background="@drawable/card_view_bg">
+        android:background="@drawable/card_view_bg"
+        style="@style/cadastroCard">
 
         <TextView
             android:id="@+id/tvTitle"
@@ -52,7 +53,6 @@
             android:ems="10"
             android:gravity="top"
             android:layout_below="@id/tvDescription"
-            android:background="@drawable/et_description"
             android:textCursorDrawable="@drawable/cursor"
             style="@style/cadastroDescriptionED"/>
 
@@ -66,16 +66,15 @@
             android:text="@string/cb_pinned"
             style="@style/cadastroCheckBox"/>
 
-        <CheckBox
-            android:id="@+id/cbMarker"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/etCategory"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="30dp"
             android:layout_below="@id/etDescription"
             android:layout_toEndOf="@id/cbPinnedCard"
-            android:text="@string/cb_marker"
-            style="@style/cadastroCheckBox"/>
+            android:hint="Categoria..."/>
 
         <Button
             android:id="@+id/btnCancel"
@@ -84,7 +83,6 @@
             android:layout_marginTop="40dp"
             android:layout_below="@id/cbPinnedCard"
             android:text="@string/btn_cancel"
-            android:backgroundTint="@color/blueDark"
             style="@style/cadsatroButtonNegative"/>
 
         <Button
@@ -95,7 +93,6 @@
             android:text="@string/btn_save"
             android:layout_below="@id/cbPinnedCard"
             android:layout_toEndOf="@id/btnCancel"
-            android:backgroundTint="@color/blueDark"
             style="@style/cadsatroButtonPositive"/>
     </RelativeLayout>
 

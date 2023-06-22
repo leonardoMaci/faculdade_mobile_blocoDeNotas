@@ -15,8 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class CadastroActivity extends AppCompatActivity {
 
-    private EditText etTitle, etDescription;
-    private CheckBox cbPinnedCard, cbMarker;
+    private EditText etTitle, etDescription, etCategory;
+    private CheckBox cbPinnedCard;
     private Button btnSave, btnCancel;
 
     private Card card;
@@ -29,9 +29,9 @@ public class CadastroActivity extends AppCompatActivity {
         etTitle = findViewById(R.id.etTitle);
         etDescription = findViewById(R.id.etDescription);
         cbPinnedCard = findViewById(R.id.cbPinnedCard);
-        cbMarker = findViewById(R.id.cbMarker);
         btnSave = findViewById(R.id.btnSave);
         btnCancel = findViewById(R.id.btnCancel);
+        etCategory = findViewById(R.id.etCategory);
 
         //calc margin buttons
         DisplayMetrics displayMetrics = this.getResources().getDisplayMetrics();
@@ -55,7 +55,7 @@ public class CadastroActivity extends AppCompatActivity {
             etTitle.setText(itemSelected.getTitle());
             etDescription.setText(itemSelected.getDescription());
             cbPinnedCard.setChecked(itemSelected.isPinnedCard());
-            cbMarker.setChecked(itemSelected.isMarker());
+            etCategory.setText(itemSelected.getCategory());
         }
 
         btnSave.setOnClickListener(new View.OnClickListener() {
@@ -91,13 +91,13 @@ public class CadastroActivity extends AppCompatActivity {
             card.setTitle(etTitle.getText().toString());
             card.setDescription(etDescription.getText().toString());
             card.setPinnedCard(cbPinnedCard.isChecked());
-            card.setMarker(cbMarker.isChecked());
+            card.setCategory(etCategory.getText().toString());
             CardDAO.insert(this, card);
 
             etTitle.setText("");
             etDescription.setText("");
             cbPinnedCard.setChecked(false);
-            cbMarker.setChecked(false);
+            etCategory.setText("");
             card = null;
 
             Intent i = new Intent(CadastroActivity.this, MainActivity.class);
@@ -117,14 +117,14 @@ public class CadastroActivity extends AppCompatActivity {
             card.setTitle(etTitle.getText().toString());
             card.setDescription(etDescription.getText().toString());
             card.setPinnedCard(cbPinnedCard.isChecked());
-            card.setMarker(cbMarker.isChecked());
+            card.setCategory(etCategory.getText().toString());
 
             CardDAO.edit(this, card);
 
             etTitle.setText("");
             etDescription.setText("");
             cbPinnedCard.setChecked(false);
-            cbMarker.setChecked(false);
+            etCategory.setText("");
             card = null;
 
             Intent i = new Intent(CadastroActivity.this, MainActivity.class);

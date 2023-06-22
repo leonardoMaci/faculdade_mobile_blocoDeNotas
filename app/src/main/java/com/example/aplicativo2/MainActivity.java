@@ -14,8 +14,13 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -23,6 +28,7 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
     CardAdpter cardAdpter;
     Boolean deleteCard = false;
+    List<String> categorias = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +101,26 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                 recreate();
+            }
+        });
+
+        categorias = new ArrayList<>(Arrays.asList("Todos", "Favoritos", "ER"));
+        Spinner spinnerFilter = findViewById(R.id.spinnerOptions);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categorias);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerFilter.setAdapter(adapter);
+
+
+        spinnerFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedFilter = parent.getAdapter().getItem(position).toString();
+                cardAdpter.filtrar(selectedFilter);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
 

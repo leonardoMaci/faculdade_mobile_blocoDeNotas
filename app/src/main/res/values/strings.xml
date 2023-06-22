@@ -4,8 +4,7 @@
     <string name="et_title">Título...</string>
     <string name="tv_description">Descrição</string>
     <string name="et_description">Descrição...</string>
-    <string name="cb_pinned">Cartão Fixado</string>
-    <string name="cb_marker">Marcador</string>
+    <string name="cb_pinned">Favorito</string>
     <string name="btn_save">Salvar</string>
     <string name="btn_cancel">Cancelar</string>
     <string name="pt_br_language">Português</string>

@@ -21,11 +21,11 @@ public class CardDAO {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
         ContentValues valores = new ContentValues();
-        valores.put("title", card.getTitle() );
-        valores.put("description", card.getDescription() );
-        valores.put("pinnedCard", card.isPinnedCard() );
-        valores.put("marker", card.isMarker() );
+        valores.put("title", card.getTitle());
+        valores.put("description", card.getDescription());
+        valores.put("pinnedCard", card.isPinnedCard());
         valores.put("timeStamp", sdf.format(Calendar.getInstance().getTime()));
+        valores.put("category", card.getCategory());
 
         db.insert("cards", null, valores);
     }
@@ -36,11 +36,11 @@ public class CardDAO {
 
         ContentValues valores = new ContentValues();
 
-        valores.put("title", card.getTitle() );
-        valores.put("description", card.getDescription() );
-        valores.put("pinnedCard", card.isPinnedCard() );
-        valores.put("marker", card.isMarker() );
+        valores.put("title", card.getTitle());
+        valores.put("description", card.getDescription());
+        valores.put("pinnedCard", card.isPinnedCard());
         //valores.put("timeStamp", card.getTimestamp());
+        valores.put("category", card.getCategory());
 
         db.update("cards", valores ,
                 " id = " + card.getId(), null  );
@@ -59,7 +59,7 @@ public class CardDAO {
 
         List<Card> lista = new ArrayList<>();
 
-        Cursor cursor = db.rawQuery("SELECT id, title, description, pinnedCard, marker, timeStamp FROM cards ORDER BY id and pinnedCard desc",
+        Cursor cursor = db.rawQuery("SELECT id, title, description, pinnedCard, marker, timeStamp, category FROM cards ORDER BY id and pinnedCard desc",
                 null);
         if( cursor != null && cursor.getCount() > 0 ){
             cursor.moveToFirst();
@@ -74,7 +74,7 @@ public class CardDAO {
     public static Card getCardById(Context context, int idAluno){
         SQLiteDatabase db = new Connection(context).getReadableDatabase();
         Card card = null;
-        Cursor cursor = db.rawQuery("SELECT id, title, description, pinnedCard, marker FROM cards " +
+        Cursor cursor = db.rawQuery("SELECT id, title, description, pinnedCard, marker, category FROM cards " +
                 " WHERE id = " + idAluno, null);
         if( cursor != null && cursor.getCount() > 0 ){
             cursor.moveToFirst();
@@ -84,6 +84,7 @@ public class CardDAO {
             card.setDescription( cursor.getString( 2 )  );
             card.setPinnedCard( cursor.getInt( 3 ) == 1 );
             card.setMarker( cursor.getInt( 4 ) == 1 );
+            card.setCategory( cursor.getString( 5 ) );
         }
         return card;
     }
@@ -102,12 +103,13 @@ public class CardDAO {
         }
 
         Card card = new Card();
-        card.setId( cursor.getInt( 0 )  );
-        card.setTitle( cursor.getString( 1 )  );
-        card.setDescription( cursor.getString( 2 )  );
-        card.setPinnedCard( cursor.getInt( 3 ) == 1 );
-        card.setMarker( cursor.getInt( 4 ) == 1 );
+        card.setId(cursor.getInt( 0 )  );
+        card.setTitle(cursor.getString( 1 )  );
+        card.setDescription(cursor.getString( 2 )  );
+        card.setPinnedCard(cursor.getInt( 3 ) == 1 );
+        card.setMarker(cursor.getInt( 4 ) == 1 );
         card.setTimestamp(date);
+        card.setCategory(cursor.getString(6) );
 
         return card;
     }

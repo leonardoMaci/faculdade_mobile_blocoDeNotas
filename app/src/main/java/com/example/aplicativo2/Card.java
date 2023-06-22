@@ -18,16 +18,19 @@ public class Card implements Serializable {
     private boolean marker;
     private Date timestamp;
 
+    private String category;
+
     public Card() {
     }
 
-    public Card(int id, String title, String description, boolean pinnedCard, boolean marker, Date timestamp) {
+    public Card(int id, String title, String description, boolean pinnedCard, boolean marker, Date timestamp, String category) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.pinnedCard = pinnedCard;
         this.marker = marker;
         this.timestamp = timestamp;
+        this.category = category;
     }
 
     public int getId() {
@@ -78,6 +81,14 @@ public class Card implements Serializable {
         this.timestamp = timestamp;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     public static Card builder() {
         List<Card> cards = new ArrayList<>();
 
@@ -87,7 +98,8 @@ public class Card implements Serializable {
                 "Descrição exemplo",
                 true,
                 true,
-                new Date(2023,04,1));
+                new Date(2023,04,1),
+                "Todos");
 
         return card;
     }
