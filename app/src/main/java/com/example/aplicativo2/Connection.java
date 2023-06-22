@@ -8,7 +8,7 @@ public class Connection extends SQLiteOpenHelper {
 
     private static final String NOME_BD = "bd-appCard";
 
-    private static final int VERSAO_BD = 2;
+    private static final int VERSAO_BD = 3;
 
     public Connection(Context context) {
         super(context, NOME_BD, null, VERSAO_BD);
@@ -25,6 +25,10 @@ public class Connection extends SQLiteOpenHelper {
                 " pinnedCard BOOL NOT NULL DEFAULT 0 ," +
                 " category TEXT," +
                 " timeStamp DATETIME DEFAULT CURRENT_TIMESTAMP)");
+
+        db.execSQL("CREATE TABLE category ( " +
+                " id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT ," +
+                " title TEXT NOT NULL )");
     }
 
     @Override

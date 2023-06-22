@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        categorias = new ArrayList<>(Arrays.asList("Todos", "Favoritos", "ER"));
+        categorias = CardDAO.getCategory(getApplicationContext());
         Spinner spinnerFilter = findViewById(R.id.spinnerOptions);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categorias);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -144,12 +144,13 @@ public class MainActivity extends AppCompatActivity {
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
 
             List<Card> cards = CardDAO.getCards(recyclerView.getContext());
-            Card card = cards.get(viewHolder.getAdapterPosition());
+            Card cardMove = cards.get(viewHolder.getAdapterPosition());
 
             int from = viewHolder.getAdapterPosition();
             int to = target.getAdapterPosition();
+            Card cardTo = cards.get(to);
 
-            if (card.isPinnedCard()) {
+            if (cardMove.isPinnedCard()) {
                 return false;
             }
 

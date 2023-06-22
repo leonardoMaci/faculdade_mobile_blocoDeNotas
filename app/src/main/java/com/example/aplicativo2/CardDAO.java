@@ -9,6 +9,7 @@ import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
@@ -27,7 +28,13 @@ public class CardDAO {
         valores.put("timeStamp", sdf.format(Calendar.getInstance().getTime()));
         valores.put("category", card.getCategory());
 
+        ContentValues valoresCategory = new ContentValues();
+        valoresCategory.put("title", card.getCategory());
+
         db.insert("cards", null, valores);
+
+        if(!getCategory(context).stream().anyMatch(categoria -> categoria.toLowerCase().equals(card.getCategory().toLowerCase())))
+            db.insert("category", null, valoresCategory);
     }
 
     public static void edit(Context context, Card card){
@@ -42,8 +49,14 @@ public class CardDAO {
         //valores.put("timeStamp", card.getTimestamp());
         valores.put("category", card.getCategory());
 
+        ContentValues valoresCategory = new ContentValues();
+        valoresCategory.put("title", card.getCategory());
+
         db.update("cards", valores ,
                 " id = " + card.getId(), null  );
+
+        if(!getCategory(context).stream().anyMatch(categoria -> categoria.toLowerCase().equals(card.getCategory().toLowerCase())))
+            db.insert("category", null, valoresCategory);
     }
 
     public static void delete(Context context, int idCard){
@@ -112,5 +125,22 @@ public class CardDAO {
         card.setCategory(cursor.getString(6) );
 
         return card;
+    }
+
+    public static List<String> getCategory(Context context){
+        List<String> lista = new ArrayList<>(Arrays.asList("Todos", "Favoritos"));
+
+        SQLiteDatabase db = new Connection(context).getReadableDatabase();
+        Card card = null;
+        Cursor cursor = db.rawQuery("SELECT title FROM category ", null);
+
+        if( cursor != null && cursor.getCount() > 0 ){
+            cursor.moveToFirst();
+            do{
+                lista.add(cursor.getString(0));
+            }while ( cursor.moveToNext() );
+        }
+
+        return lista;
     }
 }

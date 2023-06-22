@@ -17,7 +17,6 @@ public class Card implements Serializable {
     private boolean pinnedCard;
     private boolean marker;
     private Date timestamp;
-
     private String category;
 
     public Card() {
