@@ -33,7 +33,7 @@ public class CardDAO {
 
         db.insert("cards", null, valores);
 
-        if(!getCategory(context).stream().anyMatch(categoria -> categoria.toLowerCase().equals(card.getCategory().toLowerCase())))
+        if((!card.getCategory().equals("") && card.getCategory() != null) && !getCategory(context).stream().anyMatch(categoria -> categoria.toLowerCase().equals(card.getCategory().toLowerCase())))
             db.insert("category", null, valoresCategory);
     }
 
@@ -55,7 +55,7 @@ public class CardDAO {
         db.update("cards", valores ,
                 " id = " + card.getId(), null  );
 
-        if(!getCategory(context).stream().anyMatch(categoria -> categoria.toLowerCase().equals(card.getCategory().toLowerCase())))
+        if((!card.getCategory().equals("") && card.getCategory() != null) && !getCategory(context).stream().anyMatch(categoria -> categoria.toLowerCase().equals(card.getCategory().toLowerCase())))
             db.insert("category", null, valoresCategory);
     }
 
